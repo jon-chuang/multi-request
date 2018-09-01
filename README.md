@@ -6,15 +6,11 @@ Although not suggested use case, potentially a tool for carrying out spamming, s
 ![Images/DiagramSharp.png](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
 
 ## Problem Specification
-
-One of our objectives was to have as many requests running concurrently as possible. 
+One of our objectives was to have as many requests running concurrently as possible. We do so using multiprocessing.
 
 In a test case, this optimum number was about 300, beyond which performance started to decline due to detection. Running on an laptop, our system was able to perform about 105,000 http get requests over 45 minutes to a single website with captcha and behavioural-detection capabilities, all while performing on-the-fly data munging. On average, 80% of those requests were successful (roughly 30 successful requests/second).
  
 Room for improvement: In the beginning, computation was a much smaller time-factor compared to request latency, especially through mediating proxy. (IO bound) Hence little or no attention was paid to computationally performant implementation. However, scaling up to 500 concurrent requests, access to the proxy pool for read and writes started locking out.
-
-In order to deal with proxies which 
-Circumvent blacklisting/throttling of ip addresses, including paid and unpaid proxies
 
 ### Solution
 Achieves performance by carrying out scoring and blacklisting of proxies, and evades detection by rotating data and proxies. As the system operates on a one job one proxy basis to keep a low network profile on each proxy, proxies are locked out when in use. However, for large jobs with several hundreds of concurrent requests, one often encounters a proxy bottleneck when fetching from free, regularly updated sources on the internet.
