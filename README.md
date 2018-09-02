@@ -1,9 +1,10 @@
 # MultiRequests
 
 A system for fast and robust anonymised parallel requests over a shared pool of unreliable proxies to a potentially unfriendly peer. 
-Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 
 ![Images/DiagramSharp.png](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
+
+Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 
 ## Problem Specification
 One of our objectives was to have as many requests running concurrently as possible. We do so using multiprocessing.
@@ -30,7 +31,8 @@ The user must implement:
 * The data classes for for the superclass Data, which must implement the following methods:
 
 `__init__`, `__str__`, `next`
-As `__str__` will serve as a unique identifier, please try to make the name unique. (Note to self: change to use `__repr__` instead.)
+
+    As `__str__` will serve as a unique identifier, please try to make the name unique. (Note to self: change to use `__repr__` instead.)
 
 * The batch_handler instance which initiates and runs the MultiBatchHandler session, and pipes around data. 
 * The call function to a particular webservice, which returns signals (success, score, completed, switch) to the batch handler for scoring proxies and rotating data and proxies. 
