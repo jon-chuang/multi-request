@@ -1,6 +1,6 @@
 # MultiRequests
 
-A system for fast and robust anonymised parallel requests over a shared pool of unreliable proxies to a potentially unfriendly peer. 
+An system for fast and robust anonymised parallel requests over a periodically updated shared pool of unreliable proxies to a potentially unfriendly peer. 
 
 ![Images/DiagramSharp.png](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
 
@@ -14,7 +14,7 @@ In a test case, this optimum number was about 300, beyond which performance star
 Room for improvement: In the beginning, computation was a much smaller time-factor compared to request latency, especially through mediating proxy. (IO bound) Hence little or no attention was paid to computationally performant implementation. However, scaling up to 500 concurrent requests, access to the proxy pool for read and writes started locking out.
 
 ### Solution
-Achieves performance by carrying out scoring and blacklisting of proxies, and evades detection by rotating data and proxies. As the system operates on a one job one proxy basis to keep a low network profile on each proxy, proxies are locked out when in use. However, for large jobs with several hundreds of concurrent requests, one often encounters a proxy bottleneck when fetching from free, regularly updated sources on the internet.
+Achieves performance by carrying out sophisticated on-the-fly scoring and blacklisting of proxies, which sees proxies as a valuable resource, and evades detection by rotating data and proxies. As the system operates on a one job one proxy basis to keep a low network profile on each proxy, proxies are locked out when in use. However, for large jobs with several hundreds of concurrent requests, one often encounters a proxy bottleneck when fetching from free, regularly updated sources on the internet.
 
 To solve this problem, we also a feature called virtualisation, where the proxy supply can be increased arbitrarily by creating copies of proxies already in use. When any of the copies are returned to the pool, the copy with the highest-level of virtualisation is destroyed. This way, as more real proxies enter the pool, all the virtual proxies will eventually be destroyed. 
 
