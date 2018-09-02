@@ -1,6 +1,6 @@
 # MultiRequests
 
-An system for fast and robust anonymised parallel requests over a periodically updated shared pool of unreliable proxies to a potentially unfriendly peer. 
+An system for fast and robust anonymised asynchronous requests over a periodically updated shared pool of unreliable proxies to a potentially unfriendly peer. 
 
 ![Images/DiagramSharp.png](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
 
