@@ -32,7 +32,7 @@ The user must implement:
 
 `__init__`, `__str__`, `next`
 
-    As `__str__` will serve as a unique identifier, please try to make the name unique. (Note to self: change to use `__repr__` instead.)
+** As `__str__` will serve as a unique identifier, please try to make the name unique. (Note to self: change to use `__repr__` instead.)
 
 * The batch_handler instance which initiates and runs the MultiBatchHandler session, and pipes around data. 
 * The call function to a particular webservice, which returns signals (success, score, completed, switch) to the batch handler for scoring proxies and rotating data and proxies. 
