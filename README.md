@@ -1,10 +1,10 @@
 # MultiRequests
 
-An system for fast and robust anonymised asynchronous requests over a periodically updated shared pool of unreliable proxies to a potentially unfriendly peer. 
+An system for fast and robust anonymised asynchronous requests over a periodically updated shared pool of unreliable proxies to a potentially unfriendly peer. Designed for ultra-high throughput scraping.
 
 ![Images/DiagramSharp.png](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
 
-Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
+Potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 
 ## Problem Specification
 One of our objectives was to have as many requests running concurrently as possible. We do so using multiprocessing.
